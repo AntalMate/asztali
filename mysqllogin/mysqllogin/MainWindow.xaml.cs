@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace mysqllogin
     /// </summary>
     public partial class MainWindow : Window
     {
+        MySqlConnection kapcs = new MySqlConnection("server=localhost; database=asztali_11a; uid=root; password='';");
         public MainWindow()
         {
             InitializeComponent();
@@ -27,7 +29,18 @@ namespace mysqllogin
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+         kapcs.Open();
+            MySqlCommand sql = $"SELECT * FROM user WHERE nev= '{usern.Text}'  AND jelszo='{passw.Text}'";
+            MySqlDataReader reader = sql.ExecuteReader();
+            if (reader.Read())
+            {
+                MessageBox.Show("Sikeres bejelentkezés!");
+            }
+            else
+            {
+                MessageBox.Show("Sikertelen bejelentkezés!");
+            }
+            kapcs.Close();
         }
     }
 }
