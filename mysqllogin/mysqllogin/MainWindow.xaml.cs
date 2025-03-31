@@ -30,8 +30,10 @@ namespace mysqllogin
         private void Button_Click(object sender, RoutedEventArgs e)
         {
          kapcs.Open();
-            MySqlCommand sql = $"SELECT * FROM user WHERE nev= '{usern.Text}'  AND jelszo='{passw.Text}'";
-            MySqlDataReader reader = sql.ExecuteReader();
+            var sql = $"SELECT * FROM user WHERE nev= '{usern.Text}'  AND jelszo='{passw.Text}';";
+            lbDebug.Content = sql;
+            var parancs = new MySqlCommand(sql, kapcs);
+            var reader = parancs.ExecuteReader();
             if (reader.Read())
             {
                 MessageBox.Show("Sikeres bejelentkezés!");
@@ -41,6 +43,14 @@ namespace mysqllogin
                 MessageBox.Show("Sikertelen bejelentkezés!");
             }
             kapcs.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (regPass.Password == regPassAgain.Password)
+            {
+                MessageBox.Show("A két jelszó megegyezik! sigma");
+            }
         }
     }
 }
