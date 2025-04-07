@@ -25,6 +25,18 @@ namespace mysqllogin
         public MainWindow()
         {
             InitializeComponent();
+            kapcs.Open();
+            //userek kiírása userek nevű listboxba
+            var sql = "SELECT * FROM antalmd_user;";
+            var parancs = new MySqlCommand(sql, kapcs);
+            var reader = parancs.ExecuteReader();
+            while (reader.Read())
+            {
+                userek.Items.Add(reader["nev"].ToString());
+            }
+            reader.Close();
+
+            kapcs.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -67,6 +79,7 @@ namespace mysqllogin
                 var sql = $"INSERT INTO antalmd_user (nev, jelszo) VALUES ('{regUser.Text}', '{regPass.Password}');";
                 lbDebug.Content = sql;
                 new MySqlCommand(sql, kapcs).ExecuteNonQuery();
+                userek.Items.Add(regUser.Text);
                 MessageBox.Show("Sikeres regisztráció!");
             }
             kapcs.Close();
@@ -74,7 +87,38 @@ namespace mysqllogin
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            //a már bejelentkezett felhasználó jelszavának frissítője az oldPass, newPass, newPassAgain textboxok segítségével
+            kapcs.Open();
+            var reader = new MySqlCommand($"SELECT * FROM antalmd_user WHERE nev= '{usern.Text}'", kapcs).ExecuteReader();
+            if (reader.Read()) {
+                if (reader["jelszo"].ToString() == oldPass.Password)
+                {
+                    if (newPass.Password == newPassAgain.Password)
+                    {
+                        //jelszó frissítése
+                        var sql = $"UPDATE antalmd_user SET jelszo = '{newPass.Password}' WHERE nev= '{usern.Text}';";
+                        reader.Close();
+                        new MySqlCommand(sql, kapcs).ExecuteNonQuery();
+                        MessageBox.Show("Sikeres jelszóváltoztatás!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("A két új jelszó nem egyezik meg! nemsigma");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("A régi jelszó nem megfelelő! nemsigma");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nincs ilyen felhasználó! nemsigma");
 
+
+            }
+            
+            
         }
     }
 }
