@@ -7,20 +7,29 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid RenderTransformOrigin="0.148,0.457">
-        <Label Content="Username:" HorizontalAlignment="Left" Margin="99,60,0,0" VerticalAlignment="Top"/>
-        <Label Content="Password:" HorizontalAlignment="Left" Margin="99,111,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="usern" HorizontalAlignment="Left" Margin="175,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Belép" HorizontalAlignment="Left" Margin="360,84,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <TextBox x:Name="passw" HorizontalAlignment="Left" Margin="175,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Username:" HorizontalAlignment="Left" Margin="43,18,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="47,44,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="usern" HorizontalAlignment="Left" Margin="115,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Belép" HorizontalAlignment="Left" Margin="202,85,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBox x:Name="passw" HorizontalAlignment="Left" Margin="115,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="lbDebug" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Username" HorizontalAlignment="Left" Margin="111,239,0,0" VerticalAlignment="Top"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="111,270,0,0" VerticalAlignment="Top"/>
-        <Label Content="Password again" HorizontalAlignment="Left" Margin="113,301,0,0" VerticalAlignment="Top"/>
+        <Label Content="Username" HorizontalAlignment="Left" Margin="46,153,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="50,184,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password again" HorizontalAlignment="Left" Margin="18,215,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="265,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:Name="regUser" HorizontalAlignment="Left" Margin="222,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox x:Name="regPass" HorizontalAlignment="Left" Margin="222,274,0,0" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox x:Name="regPassAgain" HorizontalAlignment="Left" Margin="222,305,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Regisztrál" HorizontalAlignment="Left" Margin="400,277,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <TextBox x:Name="regUser" HorizontalAlignment="Left" Margin="129,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="regPass" HorizontalAlignment="Left" Margin="129,188,0,0" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="regPassAgain" HorizontalAlignment="Left" Margin="129,219,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Regisztrál" HorizontalAlignment="Left" Margin="194,252,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Label Content="Régi jelszó" HorizontalAlignment="Left" Margin="493,18,0,0" VerticalAlignment="Top"/>
+        <Label Content="Új jelszó" HorizontalAlignment="Left" Margin="505,43,0,0" VerticalAlignment="Top"/>
+        <Label Content="Új jelszó megint" HorizontalAlignment="Left" Margin="464,74,0,0" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="newPass" HorizontalAlignment="Left" Margin="564,48,0,0" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="oldPass" HorizontalAlignment="Left" Margin="564,22,0,0" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="newPassAgain" HorizontalAlignment="Left" Margin="564,77,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Módosít" HorizontalAlignment="Left" Margin="636,111,0,0" VerticalAlignment="Top" Click="Button_Click_2"/>
+        <CheckBox x:Name="biztosTorol" Content="Biztosan törölni akarja a felhasználót?" HorizontalAlignment="Left" Margin="505,205,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="deleteAccount" Content="Töröl" HorizontalAlignment="Left" Margin="599,232,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
