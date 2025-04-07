@@ -21,7 +21,7 @@ namespace mysqllogin
     /// </summary>
     public partial class MainWindow : Window
     {
-        MySqlConnection kapcs = new MySqlConnection("server=localhost; database=asztali_11a; uid=root; password='';");
+        MySqlConnection kapcs = new MySqlConnection("server = server.fh2.hu;database = v2labgwj_11a; uid = v2labgwj_11a; password = 'VGFR2GJjqudMt8Q4SA5j'");
         public MainWindow()
         {
             InitializeComponent();
@@ -29,8 +29,8 @@ namespace mysqllogin
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-         kapcs.Open();
-            var sql = $"SELECT * FROM user WHERE nev= '{usern.Text}'  AND jelszo='{passw.Text}';";
+            kapcs.Open();
+            var sql = $"SELECT * FROM antalmd_user WHERE nev= '{usern.Text}'  AND jelszo='{passw.Text}';";
             lbDebug.Content = sql;
             var parancs = new MySqlCommand(sql, kapcs);
             var reader = parancs.ExecuteReader();
@@ -42,15 +42,34 @@ namespace mysqllogin
             {
                 MessageBox.Show("Sikertelen bejelentkezés!");
             }
+            reader.Close();
             kapcs.Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (regPass.Password == regPassAgain.Password)
+            if (regPass.Password != regPassAgain.Password)
             {
-                MessageBox.Show("A két jelszó megegyezik! sigma");
+                MessageBox.Show("A két jelszó nem egyezik meg! nemsigma");
+                return;
             }
+            kapcs.Open();
+            // ha már létezik a felhasználó
+            var reader = new MySqlCommand($"SELECT * FROM antalmd_user WHERE nev= '{regUser.Text}'", kapcs).ExecuteReader();
+            if (reader.Read())
+            {
+                MessageBox.Show("Ez a felhasználónév már létezik! nemsigma");
+            }
+            else
+            {
+                reader.Close();
+                //nincs ilyen felhasználó lehet regisztrálni
+                var sql = $"INSERT INTO antalmd_user (nev, jelszo) VALUES ('{regUser.Text}', '{regPass.Password}');";
+                lbDebug.Content = sql;
+                new MySqlCommand(sql, kapcs).ExecuteNonQuery();
+                MessageBox.Show("Sikeres regisztráció!");
+            }
+            kapcs.Close();
         }
     }
 }
