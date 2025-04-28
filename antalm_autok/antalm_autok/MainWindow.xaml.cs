@@ -27,7 +27,6 @@ namespace antalm_autok
         {
             InitializeComponent();
             kapcs.Open();
-            //userek kiírása userek nevű listboxba
             var sql = "SELECT * FROM antalm_autok;";
             var parancs = new MySqlCommand(sql, kapcs);
             var lekerdezes = parancs.ExecuteReader();
