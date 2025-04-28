@@ -7,11 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ListBox x:Name="lbTermekek" Margin="295,60,361,60"/>
+        <ListBox x:Name="lbTermekek" Margin="295,60,361,60" SelectionChanged="lbTermekek_SelectionChanged"/>
         <TextBox HorizontalAlignment="Left" Margin="89,60,0,0" TextWrapping="Wrap" x:Name="txtCikkszam" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Margin="89,111,0,0" TextWrapping="Wrap" x:Name="txtMegnevezes" VerticalAlignment="Top" Width="120"/>
         <Label Content="Cikkszám" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"/>
         <Label Content="Megnevezés" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top"/>
         <Button Content="Felvisz" HorizontalAlignment="Left" Margin="107,159,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBox x:Name="modCikk" HorizontalAlignment="Left" Margin="582,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="modNev" HorizontalAlignment="Left" Margin="582,102,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Cikkszám" HorizontalAlignment="Left" Margin="480,56,0,0" VerticalAlignment="Top"/>
+        <Label Content="Megnevezés" HorizontalAlignment="Left" Margin="480,98,0,0" VerticalAlignment="Top"/>
+        <Button Content="Módosít" HorizontalAlignment="Left" Margin="618,159,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
     </Grid>
 </Window>
